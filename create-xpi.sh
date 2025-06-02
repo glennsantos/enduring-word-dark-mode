@@ -23,16 +23,14 @@ cp content-script.js "$TEMP_DIR/"
 cp popup.html "$TEMP_DIR/"
 cp popup.js "$TEMP_DIR/"
 
-# Copy icons directory
-cp -r icons "$TEMP_DIR/"
-
 # Change to temp directory and create XPI
 cd "$TEMP_DIR"
 
 echo "Creating XPI archive..."
 
 # Create the XPI file (which is just a ZIP file with .xpi extension)
-zip -r "../$XPI_NAME" . -x "*.DS_Store" "*.git*" "*.svn*"
+# Use specific compression settings for better compatibility
+zip -r -9 "../$XPI_NAME" . -x "*.DS_Store" "*.git*" "*.svn*"
 
 # Go back to original directory
 cd ..
@@ -61,6 +59,15 @@ if [ -f "$XPI_NAME" ]; then
     FILE_SIZE=$(ls -lh "$XPI_NAME" | awk '{print $5}')
     echo "📊 Package size: $FILE_SIZE"
     echo "✨ Ready for installation!"
+    
+    # Test the archive integrity
+    echo "🔍 Testing archive integrity..."
+    if unzip -t "$XPI_NAME" > /dev/null 2>&1; then
+        echo "✅ Archive integrity verified!"
+    else
+        echo "❌ Archive integrity check failed!"
+        exit 1
+    fi
 else
     echo "❌ Error: XPI file was not created successfully"
     exit 1
