@@ -7,10 +7,17 @@
   --dark-bg-tertiary: #3a3a3a;
   --dark-text: #e0e0e0;
   --dark-text-secondary: #b0b0b0;
-  --dark-link: #4a9eff;
-  --dark-link-hover: #66b3ff;
+  --dark-link: #87ceeb;
+  --dark-link-hover: #add8e6;
   --dark-border: #404040;
-  --dark-accent: #0066cc;
+  --dark-accent: #4a9eff;
+  --dark-blue-text: #87ceeb;
+}
+
+/* Force dark mode on everything */
+* {
+  background-color: var(--dark-bg) !important;
+  color: var(--dark-text) !important;
 }
 
 /* Global background and text */
@@ -20,12 +27,20 @@ html {
   color: var(--dark-text) !important;
 }
 
+/* Force all containers to be dark */
+div, section, article, aside, nav, header, footer, main {
+  background-color: var(--dark-bg) !important;
+  color: var(--dark-text) !important;
+}
+
 /* Main content areas */
 .site-content,
 .entry-content,
 .post-content,
 article,
-main {
+main,
+.content,
+.main-content {
   background-color: var(--dark-bg) !important;
   color: var(--dark-text) !important;
 }
@@ -33,13 +48,29 @@ main {
 /* Headers */
 h1, h2, h3, h4, h5, h6 {
   color: var(--dark-text) !important;
+  background-color: transparent !important;
+}
+
+/* Specific header styling */
+.site-header,
+.header,
+#header,
+.top-header,
+.main-header {
+  background-color: var(--dark-bg-secondary) !important;
+  color: var(--dark-text) !important;
+  border-bottom: 1px solid var(--dark-border) !important;
 }
 
 /* Navigation and header */
 .site-header,
 .main-navigation,
 .nav-menu,
-header {
+header,
+nav,
+.navigation,
+.navbar,
+.menu {
   background-color: var(--dark-bg-secondary) !important;
   color: var(--dark-text) !important;
   border-bottom: 1px solid var(--dark-border) !important;
@@ -48,36 +79,58 @@ header {
 /* Navigation links */
 .nav-menu a,
 .main-navigation a,
-nav a {
+nav a,
+.menu a,
+.navigation a {
   color: var(--dark-text) !important;
+  background-color: transparent !important;
 }
 
 .nav-menu a:hover,
 .main-navigation a:hover,
-nav a:hover {
+nav a:hover,
+.menu a:hover,
+.navigation a:hover {
   color: var(--dark-link-hover) !important;
+  background-color: var(--dark-bg-tertiary) !important;
 }
 
-/* Links */
+/* Links - make blue text lighter */
 a {
   color: var(--dark-link) !important;
+  background-color: transparent !important;
 }
 
 a:hover {
   color: var(--dark-link-hover) !important;
 }
 
+/* Force all blue text to be lighter */
+[style*="color: blue"],
+[style*="color: #0000ff"],
+[style*="color: #00f"],
+.blue,
+.text-blue {
+  color: var(--dark-blue-text) !important;
+}
+
 /* Sidebar and widgets */
 .sidebar,
 .widget,
-.widget-area {
+.widget-area,
+.secondary,
+.aside,
+#sidebar,
+#secondary {
   background-color: var(--dark-bg-secondary) !important;
   color: var(--dark-text) !important;
 }
 
 /* Footer */
 .site-footer,
-footer {
+footer,
+#footer,
+.footer {
   background-color: var(--dark-bg-secondary) !important;
   color: var(--dark-text) !important;
   border-top: 1px solid var(--dark-border) !important;
@@ -86,7 +139,9 @@ footer {
 /* Commentary content specific styling */
 .commentary-text,
 .bible-verse,
-.verse-text {
+.verse-text,
+.entry-content,
+.post-content {
   background-color: var(--dark-bg) !important;
   color: var(--dark-text) !important;
 }
@@ -103,7 +158,8 @@ input[type="text"],
 input[type="search"],
 input[type="email"],
 textarea,
-select {
+select,
+input {
   background-color: var(--dark-bg-tertiary) !important;
   color: var(--dark-text) !important;
   border: 1px solid var(--dark-border) !important;
@@ -112,25 +168,30 @@ select {
 input[type="text"]:focus,
 input[type="search"]:focus,
 input[type="email"]:focus,
-textarea:focus {
+textarea:focus,
+input:focus,
+select:focus {
   border-color: var(--dark-accent) !important;
   outline: none !important;
+  background-color: var(--dark-bg-tertiary) !important;
 }
 
 /* Buttons */
 button,
 .button,
 input[type="submit"],
-input[type="button"] {
+input[type="button"],
+.btn {
   background-color: var(--dark-accent) !important;
   color: white !important;
-  border: none !important;
+  border: 1px solid var(--dark-accent) !important;
 }
 
 button:hover,
 .button:hover,
 input[type="submit"]:hover,
-input[type="button"]:hover {
+input[type="button"]:hover,
+.btn:hover {
   background-color: var(--dark-link-hover) !important;
 }
 
@@ -147,6 +208,8 @@ th {
 
 td {
   border-color: var(--dark-border) !important;
+  background-color: var(--dark-bg-secondary) !important;
+  color: var(--dark-text) !important;
 }
 
 /* Blockquotes and special content */
@@ -182,10 +245,12 @@ pre {
 /* Specific Enduring Word elements */
 .entry-title {
   color: var(--dark-text) !important;
+  background-color: transparent !important;
 }
 
 .entry-meta {
   color: var(--dark-text-secondary) !important;
+  background-color: transparent !important;
 }
 
 /* Bible book and chapter selectors */
@@ -208,19 +273,59 @@ select[name*="chapter"],
 .verse-ref {
   color: var(--dark-accent) !important;
   font-weight: bold !important;
+  background-color: transparent !important;
 }
 
-/* Override any white backgrounds */
+/* Override any white backgrounds aggressively */
 div[style*="background-color: white"],
 div[style*="background-color: #fff"],
-div[style*="background-color: #ffffff"] {
+div[style*="background-color: #ffffff"],
+span[style*="background-color: white"],
+span[style*="background-color: #fff"],
+span[style*="background-color: #ffffff"],
+p[style*="background-color: white"],
+p[style*="background-color: #fff"],
+p[style*="background-color: #ffffff"] {
   background-color: var(--dark-bg) !important;
 }
 
 /* Override any black text on white backgrounds */
 div[style*="color: black"],
 div[style*="color: #000"],
-div[style*="color: #000000"] {
+div[style*="color: #000000"],
+span[style*="color: black"],
+span[style*="color: #000"],
+span[style*="color: #000000"],
+p[style*="color: black"],
+p[style*="color: #000"],
+p[style*="color: #000000"] {
+  color: var(--dark-text) !important;
+}
+
+/* Force all text elements to be light */
+p, span, div, li, ul, ol, dl, dt, dd {
+  color: var(--dark-text) !important;
+  background-color: transparent !important;
+}
+
+/* Lists */
+ul, ol, li {
+  color: var(--dark-text) !important;
+  background-color: transparent !important;
+}
+
+/* Images - reduce brightness */
+img {
+  filter: brightness(0.8) contrast(1.1) !important;
+}
+
+/* Specific overrides for common WordPress/theme classes */
+.container,
+.wrapper,
+.content-wrapper,
+.page-wrapper,
+.site-wrapper {
+  background-color: var(--dark-bg) !important;
   color: var(--dark-text) !important;
 }
 
@@ -246,4 +351,19 @@ div[style*="color: #000000"] {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--dark-accent);
+}
+
+/* Force override for any remaining light elements */
+body * {
+  background-color: var(--dark-bg) !important;
+  color: var(--dark-text) !important;
+}
+
+/* But allow some elements to have different backgrounds */
+input, select, textarea, button {
+  background-color: var(--dark-bg-tertiary) !important;
+}
+
+nav, header, footer, .sidebar, .widget {
+  background-color: var(--dark-bg-secondary) !important;
 } 
