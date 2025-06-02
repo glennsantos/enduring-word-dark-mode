@@ -1,0 +1,249 @@
+/* Enduring Word Dark Mode CSS */
+
+/* Root variables for consistent theming */
+:root {
+  --dark-bg: #1a1a1a;
+  --dark-bg-secondary: #2d2d2d;
+  --dark-bg-tertiary: #3a3a3a;
+  --dark-text: #e0e0e0;
+  --dark-text-secondary: #b0b0b0;
+  --dark-link: #4a9eff;
+  --dark-link-hover: #66b3ff;
+  --dark-border: #404040;
+  --dark-accent: #0066cc;
+}
+
+/* Global background and text */
+body,
+html {
+  background-color: var(--dark-bg) !important;
+  color: var(--dark-text) !important;
+}
+
+/* Main content areas */
+.site-content,
+.entry-content,
+.post-content,
+article,
+main {
+  background-color: var(--dark-bg) !important;
+  color: var(--dark-text) !important;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--dark-text) !important;
+}
+
+/* Navigation and header */
+.site-header,
+.main-navigation,
+.nav-menu,
+header {
+  background-color: var(--dark-bg-secondary) !important;
+  color: var(--dark-text) !important;
+  border-bottom: 1px solid var(--dark-border) !important;
+}
+
+/* Navigation links */
+.nav-menu a,
+.main-navigation a,
+nav a {
+  color: var(--dark-text) !important;
+}
+
+.nav-menu a:hover,
+.main-navigation a:hover,
+nav a:hover {
+  color: var(--dark-link-hover) !important;
+}
+
+/* Links */
+a {
+  color: var(--dark-link) !important;
+}
+
+a:hover {
+  color: var(--dark-link-hover) !important;
+}
+
+/* Sidebar and widgets */
+.sidebar,
+.widget,
+.widget-area {
+  background-color: var(--dark-bg-secondary) !important;
+  color: var(--dark-text) !important;
+}
+
+/* Footer */
+.site-footer,
+footer {
+  background-color: var(--dark-bg-secondary) !important;
+  color: var(--dark-text) !important;
+  border-top: 1px solid var(--dark-border) !important;
+}
+
+/* Commentary content specific styling */
+.commentary-text,
+.bible-verse,
+.verse-text {
+  background-color: var(--dark-bg) !important;
+  color: var(--dark-text) !important;
+}
+
+/* Bible verse styling */
+.verse {
+  background-color: var(--dark-bg-tertiary) !important;
+  border-left: 3px solid var(--dark-accent) !important;
+  color: var(--dark-text) !important;
+}
+
+/* Search and form elements */
+input[type="text"],
+input[type="search"],
+input[type="email"],
+textarea,
+select {
+  background-color: var(--dark-bg-tertiary) !important;
+  color: var(--dark-text) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+input[type="text"]:focus,
+input[type="search"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: var(--dark-accent) !important;
+  outline: none !important;
+}
+
+/* Buttons */
+button,
+.button,
+input[type="submit"],
+input[type="button"] {
+  background-color: var(--dark-accent) !important;
+  color: white !important;
+  border: none !important;
+}
+
+button:hover,
+.button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+  background-color: var(--dark-link-hover) !important;
+}
+
+/* Tables */
+table {
+  background-color: var(--dark-bg-secondary) !important;
+  color: var(--dark-text) !important;
+}
+
+th {
+  background-color: var(--dark-bg-tertiary) !important;
+  color: var(--dark-text) !important;
+}
+
+td {
+  border-color: var(--dark-border) !important;
+}
+
+/* Blockquotes and special content */
+blockquote {
+  background-color: var(--dark-bg-secondary) !important;
+  border-left: 4px solid var(--dark-accent) !important;
+  color: var(--dark-text-secondary) !important;
+}
+
+/* Code blocks */
+code,
+pre {
+  background-color: var(--dark-bg-tertiary) !important;
+  color: var(--dark-text) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+/* Social media and sharing buttons */
+.social-links,
+.share-buttons {
+  background-color: var(--dark-bg-secondary) !important;
+}
+
+/* Cookie notice and popups */
+.cookie-notice,
+.popup,
+.modal {
+  background-color: var(--dark-bg-secondary) !important;
+  color: var(--dark-text) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+/* Specific Enduring Word elements */
+.entry-title {
+  color: var(--dark-text) !important;
+}
+
+.entry-meta {
+  color: var(--dark-text-secondary) !important;
+}
+
+/* Bible book and chapter selectors */
+select[name*="book"],
+select[name*="chapter"],
+.bible-selector {
+  background-color: var(--dark-bg-tertiary) !important;
+  color: var(--dark-text) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+/* Commentary sections */
+.commentary-section {
+  background-color: var(--dark-bg) !important;
+  border-bottom: 1px solid var(--dark-border) !important;
+}
+
+/* Verse numbers and references */
+.verse-number,
+.verse-ref {
+  color: var(--dark-accent) !important;
+  font-weight: bold !important;
+}
+
+/* Override any white backgrounds */
+div[style*="background-color: white"],
+div[style*="background-color: #fff"],
+div[style*="background-color: #ffffff"] {
+  background-color: var(--dark-bg) !important;
+}
+
+/* Override any black text on white backgrounds */
+div[style*="color: black"],
+div[style*="color: #000"],
+div[style*="color: #000000"] {
+  color: var(--dark-text) !important;
+}
+
+/* Ensure readability for any missed elements */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--dark-border) var(--dark-bg-secondary);
+}
+
+/* Webkit scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--dark-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--dark-accent);
+} 
