@@ -366,4 +366,48 @@ input, select, textarea, button {
 
 nav, header, footer, .sidebar, .widget {
   background-color: var(--dark-bg-secondary) !important;
+}
+
+/* Comprehensive border overrides to ensure all borders are dark */
+* {
+  border-color: var(--dark-border) !important;
+}
+
+/* Override any white or light borders specifically */
+[style*="border: 1px solid white"],
+[style*="border: 1px solid #fff"],
+[style*="border: 1px solid #ffffff"],
+[style*="border-color: white"],
+[style*="border-color: #fff"],
+[style*="border-color: #ffffff"],
+[style*="border-top: 1px solid white"],
+[style*="border-bottom: 1px solid white"],
+[style*="border-left: 1px solid white"],
+[style*="border-right: 1px solid white"],
+[style*="border-top-color: white"],
+[style*="border-bottom-color: white"],
+[style*="border-left-color: white"],
+[style*="border-right-color: white"] {
+  border-color: var(--dark-border) !important;
+}
+
+/* Force dark borders on common elements that might have light borders */
+div, section, article, aside, nav, header, footer, main,
+table, th, td, tr, tbody, thead, tfoot,
+form, fieldset, legend,
+ul, ol, li, dl, dt, dd,
+blockquote, pre, code,
+img, figure, figcaption,
+details, summary {
+  border-color: var(--dark-border) !important;
+}
+
+/* Ensure all border styles use dark colors */
+*[style*="border"] {
+  border-color: var(--dark-border) !important;
+}
+
+/* Override any remaining light border colors */
+*:not([style*="border-color"]) {
+  border-color: var(--dark-border) !important;
 } 

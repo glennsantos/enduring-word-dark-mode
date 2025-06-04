@@ -188,6 +188,48 @@
         });
     }
 
+    // Function to handle borders specifically - ensure all borders are dark
+    function handleBorders() {
+        const allElements = document.querySelectorAll('*');
+        allElements.forEach(element => {
+            const computedStyle = window.getComputedStyle(element);
+            
+            // Check for any white or light borders
+            const borderColors = [
+                computedStyle.borderTopColor,
+                computedStyle.borderRightColor,
+                computedStyle.borderBottomColor,
+                computedStyle.borderLeftColor,
+                computedStyle.borderColor
+            ];
+            
+            // Check if any border color is white or light
+            borderColors.forEach(color => {
+                if (color === 'rgb(255, 255, 255)' || 
+                    color === 'white' || 
+                    color === '#fff' || 
+                    color === '#ffffff' ||
+                    color === 'rgb(240, 240, 240)' ||
+                    color === '#f0f0f0' ||
+                    color === 'rgb(221, 221, 221)' ||
+                    color === '#ddd' ||
+                    color === '#dddddd') {
+                    element.style.setProperty('border-color', '#000', 'important');
+                }
+            });
+            
+            // Also check inline styles for white borders
+            if (element.style.borderColor === 'white' || 
+                element.style.borderColor === '#fff' || 
+                element.style.borderColor === '#ffffff' ||
+                element.style.border && element.style.border.includes('white') ||
+                element.style.border && element.style.border.includes('#fff') ||
+                element.style.border && element.style.border.includes('#ffffff')) {
+                element.style.setProperty('border-color', '#000', 'important');
+            }
+        });
+    }
+
     // Function to force dark mode on the entire page
     function forceDarkMode() {
         // Set body and html
@@ -203,6 +245,7 @@
         handleEmbeddedContent();
         handleCookieNotice();
         handleModals();
+        handleBorders();
     }
 
     // Observer to watch for dynamically added content
