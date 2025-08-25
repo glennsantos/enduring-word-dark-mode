@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const status = document.getElementById('status');
     
     // Get current state from storage
-    chrome.storage.sync.get(['darkModeEnabled'], function(result) {
+    browser.storage.local.get(['darkModeEnabled']).then(function(result) {
         const isEnabled = result.darkModeEnabled !== false; // Default to true
         updateUI(isEnabled);
     });
@@ -19,19 +19,19 @@ document.addEventListener('DOMContentLoaded', function() {
         updateUI(newState);
         
         // Save state
-        chrome.storage.sync.set({darkModeEnabled: newState});
+        browser.storage.local.set({darkModeEnabled: newState});
         
         // Send message to content script
-        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        browser.tabs.query({active: true, currentWindow: true}).then(function(tabs) {
             if (tabs[0] && tabs[0].url.includes('enduringword.com')) {
-                chrome.tabs.sendMessage(tabs[0].id, {
+                browser.tabs.sendMessage(tabs[0].id, {
                     action: 'toggleDarkMode'
-                }, function(response) {
-                    if (chrome.runtime.lastError) {
-                        console.log('Error communicating with content script:', chrome.runtime.lastError);
-                    } else if (response) {
+                }).then(function(response) {
+                    if (response) {
                         console.log('Dark mode toggled:', response.enabled);
                     }
+                }).catch(function(error) {
+                    console.log('Error communicating with content script:', error);
                 });
             }
         });
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Check if we're on the Enduring Word website
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    browser.tabs.query({active: true, currentWindow: true}).then(function(tabs) {
         if (tabs[0] && !tabs[0].url.includes('enduringword.com')) {
             status.textContent = 'Navigate to enduringword.com to use this extension';
             toggle.style.opacity = '0.5';

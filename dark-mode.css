@@ -18,6 +18,7 @@
 * {
   background-color: var(--dark-bg) !important;
   color: var(--dark-text) !important;
+  font-family: Arial, sans-serif !important;
 }
 
 /* Global background and text */
@@ -25,6 +26,7 @@ body,
 html {
   background-color: var(--dark-bg) !important;
   color: var(--dark-text) !important;
+  font-family: Arial, sans-serif !important;
 }
 
 /* Force all containers to be dark */

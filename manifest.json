@@ -4,10 +4,10 @@
   "version": "1.0",
   "description": "Applies dark mode to enduringword.com for better reading experience",
   
-  "applications": {
+  "browser_specific_settings": {
     "gecko": {
       "id": "enduring-word-dark-mode@example.com",
-      "strict_min_version": "48.0"
+      "strict_min_version": "79.0"
     }
   },
   
