@@ -12,6 +12,7 @@
   --dark-border: #404040;
   --dark-accent: #4a9eff;
   --dark-blue-text: #8ed1fc;
+  --dark-bold-text: #40e0d0;
 }
 
 /* Force dark mode on everything */
@@ -112,6 +113,12 @@ a:hover {
 .blue,
 .text-blue {
   color: var(--dark-blue-text) !important;
+}
+
+/* Bold text styling - light teal color */
+b, strong {
+  color: var(--dark-bold-text) !important;
+  background-color: transparent !important;
 }
 
 /* Sidebar and widgets */
